@@ -1,0 +1,50 @@
+class Library_Management:
+      def __init__(self,list_of_bks):
+            self.availablebks=list_of_bks
+      def printavailablebooks(self):
+                   print("Library_Management :")
+                   print("================================")
+                   for bk in self.availablebks:
+                         print(bk)
+      def end_book(self,requestedbk):
+            if requestedbk in self.availablebks:
+                  print("The book you requested has now been borrowed")
+                  self.availablebks.remove(requestedbk)
+            else:
+                  print("Sorry requested book is currently not in the Library_Management")
+                 
+      def addbook(self,returnedbk):
+            self.availablebks.append(returnedbk)
+            print("Thanks for returning book")
+           
+class Student:
+      def request_book(self):
+            print("Enter the name of the book you would like to borrow>>")
+            self.bk=input()
+            return self.bk
+      def return_book(self):
+            print("Enter the name of the book you would like to return>>")
+            self.bk=input()
+            return self.bk
+def main():           
+      Library=Library_Management(["The computer network","The database management","operating system"])
+      student=Student()
+      done=False
+      while done==False:
+            print(""" ======Library_Management MENU=======
+                  1. Display for available books
+                  2. Request a book for Library
+                  3. Return a book for library
+                  4. Exit
+                  """)
+            option=int(input("Enter option:"))
+            if option==1:
+                        Library.printavailablebooks()
+            elif option==2:
+                        Library.end_book(student.request_book())
+            elif option==3:
+                        Library.addbook(student.return_book())
+            elif option==4:
+                  sys.exit()
+                 
+main()
